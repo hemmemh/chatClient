@@ -50,7 +50,7 @@ const Room =  () => {
         setusers(data.filter(e=>e.name !==user.user.name))
       }).finally(()=>  setuserLoader(false))
      
-      socket.current = io.connect('http://localhost:5000')
+      socket.current = io.connect(API_URL)
       socket.current.on('adminMessage',({data})=>{
         setroomLoader(false)
         setmessages(prev=>[...data.room.messages,data])
