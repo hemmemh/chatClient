@@ -1,0 +1,541 @@
+
+
+.Button{
+    .senD{
+        display: block;
+        @media (max-width:$tablet){
+            display: none;
+        }
+       }
+    overflow: hidden;
+    position: relative;
+   pointer-events: inherit;
+   cursor: pointer;
+   .css-i4bv87-MuiSvgIcon-root{
+    display: none;
+    @media (max-width:$tablet){
+        display: block;
+    }
+    @media (any-hover: hover){
+        &:hover{
+            fill: #000000;
+        }
+    }
+   }
+ 
+   span{
+    display: block;
+    @media (max-width:$tablet){
+        display: none;
+    }
+   }
+    &__cover{
+        position: relative;
+        padding: 0  0 1  *100% 0;
+        width: 100%;
+      
+    }
+    &__absolute{
+    position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    &.user{
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            }
+        }
+        background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+       border-radius: 100px;
+       font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        
+        color: #FFFFFF;
+       width: 150px;
+       flex: 0 0 150px;
+        .Button__cover{
+            padding: 0  0 50/150  *100% 0;
+        }
+
+    }
+    &.user-orders{
+        background: #FFFFFF;
+box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+@media (max-width:$mobile){
+    font-size: 6px;
+    line-height: 12px;   
+    @include adaptiveValue("font-size",14 , 6);
+}
+.Button__cover{
+    padding: 0  0 40/140  *100% 0;
+}
+color: #000000;
+width: 100%;
+
+    }
+    &.slider{
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        border-radius: 100px;
+        text-transform: uppercase;
+        color: #000000;
+        background: #FFFFFF;
+        transition: all 0.3s ease 0s;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        @include adaptiveValue("font-size", 14,11 );
+        @include adaptiveValue("line-height",16 ,13 );
+       
+        
+        @include adaptiveValue("width",140 ,80 );
+        @media (max-width:$mobile){
+            width:50%
+        }
+        .Button__cover{
+            padding: 0  0 40/140  *100% 0;
+        }
+    }
+    &.login-modal{
+        background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+color: #FFFFFF;
+width: rem(200);
+.Button__cover{
+    padding: 0  0 50/200  *100% 0;
+}
+    }
+    &.reg-modal{
+        background: #FFFFFF;
+box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+
+color: #000000;
+width: rem(200);
+.Button__cover{
+    padding: 0  0 50/200  *100% 0;
+}
+    }
+    &.caatalog{
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                color: #ffffff;
+                &:after{
+                    width: 100%;
+                }
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+            transition: all .3s;
+            border-radius: 10rem;
+            
+          }
+ background: #fff;
+ border: 1px solid #8EE902;
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 12px;
+text-align: center;
+text-transform: uppercase;
+width:rem(100);
+@media (max-width:$mobileSmall){
+    font-size: 9px;
+line-height: 10px;
+    width:rem(70);    
+}
+color: #8EE902;
+.Button__cover{
+    padding: 0  0 40/150  *100% 0;
+    z-index: 2;
+}
+    }
+    &.caatalog2{
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                color: #ffffff;
+                &:after{
+                    width: 100%;
+                }
+                .Button__absolute{
+                    &::before{
+                      color: #fff;
+                        
+                    }
+                }
+            }
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+            transition: all .3s;
+            border-radius: 10rem;
+            
+          }
+         
+ background: #fff;
+ border: 1px solid #8EE902;
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 12px;
+text-align: center;
+text-transform: uppercase;
+width:rem(50);
+@media (max-width:$mobileSmall){
+    font-size: 9px;
+line-height: 10px;
+    width:rem(36);    
+}
+color: #FFFFFF;
+&.active{
+    
+    @media (any-hover: hover){
+        &:hover{
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+    &:after {
+        width: 100%;
+    }
+    .Button__absolute{
+        &::before{
+          color: #fff;
+            
+        }
+    }
+}
+.Button__cover{
+    padding: 0  0 80/150  *100% 0;
+}
+.Button__absolute{
+    &::before{
+        color: #8EE902;
+        z-index: 4;
+        font-size: 12px;
+        @media (max-width:$mobileSmall){
+            font-size: 9px;
+        }
+
+      }
+      @media (any-hover: hover){
+        &:hover{
+            &::before{
+                color: #ffffff;
+         
+        
+              }
+        }
+      }
+}
+    }
+    &.compare{
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        border-radius: 100px;
+        text-transform: uppercase;
+        color: #000000;
+        background: #FFFFFF;
+        transition: all 0.3s ease 0s;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        @include adaptiveValue("font-size", 14,11 );
+        @include adaptiveValue("line-height",16 ,13 );
+        
+        @include adaptiveValue("width",160 ,160 );
+        .Button__cover{
+            padding: 0  0 40/160  *100% 0;
+        }
+    }
+    &.registration{
+        background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+@include adaptiveValue("font-size",14 , 10);
+@include adaptiveValue("line-height",16 ,12 );
+text-align: center;
+text-transform: uppercase;
+
+@include adaptiveValue("width",300 ,200 );
+color: #FFFFFF;
+.Button__cover{
+    padding: 0  0 50/300  *100% 0;
+}
+    }
+    &.news{
+        background: #FFFFFF;
+box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+width: 100%;
+
+.Button__cover{
+    padding: 0  0 40/215  *100% 0;
+}
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+
+color: #000000;
+
+    }
+    &.basket{
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            }
+        }
+background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+@include adaptiveValue("width",200 , 100);
+@include adaptiveValue("font-size",14, 6);
+@include adaptiveValue("line-height",16 , 12);
+color: #FFFFFF;
+.Button__absolute{
+    padding: rem(5);
+}
+&.news{
+    @include adaptiveValue("width",180 , 100);
+    .Button__cover{
+        padding: 0  0 50/250  *100% 0;
+    }
+}
+&.news2{
+    @include adaptiveValue("width",230 , 100);
+    .Button__cover{
+        padding: 0  0 50/250  *100% 0;
+    }
+}
+.Button__cover{
+    padding: 0  0 50/200  *100% 0;
+}
+    }
+    &.slider2{
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            }
+        }
+        .Button__cover{
+            padding: 0  0 61.5% 0;
+        }   
+        background: linear-gradient(180deg, #8EE902 0%, #4F9C2C 100%);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 100px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    @include adaptiveValue("font-size", 14,11 );
+    @include adaptiveValue("line-height",16 ,13 );
+
+    @include adaptiveValue("width",70 ,30 );
+    @media (max-width:$mobile){
+        width:25%
+    }
+    &._pr{
+        @include adaptiveValue("font-size", 14,13 );
+        @include adaptiveValue("line-height",16 ,13 );
+     width: 200px;
+     &.active{
+  
+        box-shadow:0px 4px 5px rgba(0, 0, 0, 0.45);
+     }
+        .Button__cover{
+            padding: 0  0 21% 0;
+        }
+        .Button__absolute{
+            &::before{
+                margin-right: 8px;
+                
+            }
+        }
+    }
+    text-transform: uppercase;
+    color: #fff;
+    transition: all 0.3s ease 0s;
+    }
+    &.product-1{
+        border: none;
+        width: 100px;
+        border-radius: 5px;
+        .Button__cover{
+            padding: 0  0 40/100  *100% 0;
+        }
+        .Button__absolute{
+            background: #007AFF;
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            color: #FFFFFF;
+            transition: all 0.3s ease 0s;
+            @media (any-hover: hover){
+                &:hover{
+                    transition: all 0.3s ease 0s;
+                    background: #0264cd;
+                }
+            }
+        }
+
+    }
+    &.product-2{
+        width: 160px;
+        
+background: #FFFFFF;
+box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+border-radius: 100px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+text-transform: uppercase;
+
+color: #000000;
+
+        .Button__cover{
+            padding: 0  0 40/160  *100% 0;
+        }
+    }
+    &.toggle{
+        padding: 0 21px;
+        width: 100%;
+        background: none;
+        height: 100%;
+        .Button__cover{
+            padding: 0;
+        }
+        .Button__absolute{
+            position: relative;
+            background: none;
+        }
+        @media (any-hover: hover){
+            &:hover{
+                transition: all 0.3s ease 0s;
+                background: none;
+                color: #2c2b2b;
+            }
+        }
+    }
+    @media (any-hover: hover){
+        &:after{
+            width: 100%;
+          }
+          color: #fff;
+    }
+}
+.Room__inputBody{
+    @media (max-width:$tablet){
+        .Button.product-1{
+            width: 30px;
+            height: 30px;
+            .Button__cover{
+                padding:  0 0 100% 0;
+                svg{
+                    width: 20px;
+                }
+            }
+        }
+    }
+  
+}
+.ripple{
+    &.origin{
+        background-color: rgba(#0264cd, 0.7);
+        border: 1px solid #f7f6f6 ;
+    }
+    &.two{
+        background-color: rgba(173, 158, 158, 0.7);
+        border: 1px solid #f7f6f6 ;
+    }
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple 600ms linear forwards;
+    transition: all 0.6s ease 0s;
+    transform-origin: center;
+    @keyframes ripple {
+        0% {
+            border-radius: 50%;
+            transform: scale(0);
+        }
+        100% {
+            border-radius: 50%;
+            transform: scale(2);
+        }
+    }
+
+}
+
+

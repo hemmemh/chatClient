@@ -1,0 +1,109 @@
+.Login {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+&__successfullReg{
+    position: fixed;width: 300px;height: 50px;top: 30px;left: 50%;z-index: 3100;
+    transform: translate(-50%,0);
+    border-radius: 20px;
+    background: rgba($color: #007AFF, $alpha: 0.5);
+    border: 1px solid rgb(45, 208, 229);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu';
+    text-align: center;
+    animation:reg 3s  linear forwards;
+    @keyframes reg {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 34px;
+color: #fff;
+}
+&__text{
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover){
+        &:hover{
+            transition: all 0.3s ease 0s;
+            color: #007AFF;
+        }
+    }
+    cursor:pointer;
+    font-family: 'Lato';
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17.407px; /* 142.857% */
+    color: #000000;
+}
+    &__file{
+        display: none;
+        width: 0;
+        pointer-events: none;
+    }
+    &__buttons{
+        display: flex;
+        flex-direction: column;
+        gap: rem(10);
+    }
+    &__image{
+        width: 50px;
+        position: relative;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #007AFF;
+        overflow: hidden;
+        img{
+            object-fit: contain;
+            position: absolute;width: 100%;height: 100%;top: 0;left: 0;
+        }
+    }
+
+    &__imageContainer{
+        margin-top: rem(10);
+        display: flex;
+        justify-content: center;
+        margin-bottom: rem(10);
+    }
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        border-radius: 10px;
+        padding: 30px 20px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    &__input {
+        :active{
+            
+        }
+        &.active{
+            border: 1px solid #ff4400;
+        }
+        border: 1px solid #007AFF;
+  transition: all 0.3s ease 0s;
+        font-family: 'Lato';
+font-size: 16px;
+letter-spacing: 0.7px;
+font-style: normal;
+font-weight: 400;
+line-height: 17.407px; /* 142.857% */
+color: #000000;
+padding: 5px 10px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+}
+.product-1 {
+}
