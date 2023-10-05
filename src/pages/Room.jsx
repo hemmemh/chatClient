@@ -188,7 +188,7 @@ const Room =  () => {
         <div className="Room__body">
           {!room && !roomLoader &&  
            <div className="Room__loader">
-             <PersonIcon />
+             <PersonIcon className='personIcon'/>
              Выберите пользовотеля
           </div>}
 
@@ -246,7 +246,7 @@ const Room =  () => {
             <input  onKeyDown={enterInFocus} ref={inputRef} value={text} onChange={(e)=>settext(e.target.value)} type="text"  className='Room__input' placeholder='Введите текст'/>
             <label htmlFor='file' className="Room__image">
         
-<ImageIcon/>
+<ImageIcon className='actionIcon'/>
             </label>
             <input    onChange={setFileFunction} type="file" id='file' className="Login__file" />
             <div className={emojiActive ? "emojiPiecker active" : "emojiPiecker "}>
@@ -255,7 +255,7 @@ const Room =  () => {
             
       
              <div onClick={()=>setemojiActive(prev=>!prev)} className="emojiIcon">
-    <InsertEmoticonIcon/>
+    <InsertEmoticonIcon className='actionIcon'/>
              </div>
              
       

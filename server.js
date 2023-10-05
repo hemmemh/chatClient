@@ -3,7 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const PORT = 8080
+const PORT = 8040
 const app = express()
 app.use(express.static(path.resolve(__dirname, 'build')))
 app.use(express.static(__dirname))
