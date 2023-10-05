@@ -11,6 +11,10 @@ import { observer } from "mobx-react-lite"
 import { API_URL } from '../utils/config'
 import CircularProgress from '@mui/material/CircularProgress';
 import EmojiPicker from 'emoji-picker-react';
+import PersonIcon from '@mui/icons-material/Person';
+import ImageIcon from '@mui/icons-material/Image';
+import SendIcon from '@mui/icons-material/Send';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 const Room =  () => {
   const [roomLoader, setroomLoader] = useState(false)
   const [userLoader, setuserLoader] = useState(false)
@@ -184,11 +188,7 @@ const Room =  () => {
         <div className="Room__body">
           {!room && !roomLoader &&  
            <div className="Room__loader">
-             
-<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+             <PersonIcon />
              Выберите пользовотеля
           </div>}
 
@@ -246,10 +246,7 @@ const Room =  () => {
             <input  onKeyDown={enterInFocus} ref={inputRef} value={text} onChange={(e)=>settext(e.target.value)} type="text"  className='Room__input' placeholder='Введите текст'/>
             <label htmlFor='file' className="Room__image">
         
-<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<ImageIcon/>
             </label>
             <input    onChange={setFileFunction} type="file" id='file' className="Login__file" />
             <div className={emojiActive ? "emojiPiecker active" : "emojiPiecker "}>
@@ -258,17 +255,11 @@ const Room =  () => {
             
       
              <div onClick={()=>setemojiActive(prev=>!prev)} className="emojiIcon">
-             <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+    <InsertEmoticonIcon/>
              </div>
              
       
-            <Button onClick={messageFromUser} className='product-1 product-1'>           <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg><span className='senD'>отправить</span> </Button>
+            <Button onClick={messageFromUser} className='product-1 product-1'><SendIcon/><span className='senD'>отправить</span> </Button>
           </div></div>
         
         
