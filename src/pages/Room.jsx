@@ -41,8 +41,9 @@ const Room =  () => {
     const menuIconRef = useRef()
     const emojiRef = useRef()
     const emojiIconRef = useRef()
-  
+    const [smooth, setsmooth] = useState(false)
     useEffect(() => {
+ 
       if (!user.user.name) {
        navigate('/') 
       }
@@ -119,6 +120,7 @@ const Room =  () => {
  
 }
    const connectToRooom = (userOne,userTwo,name)=>{
+    setsmooth(false)
     setroomLoader(true)
     setactiveUser(userTwo)
     socket.current.emit('join',{data:{userOne,userTwo,name,data:date.getHours() + ':' + date.getMinutes()}})
@@ -133,11 +135,15 @@ const Room =  () => {
 
    const messageFromUser = ()=>{
     console.log(file,fileImage);
+    setsmooth(true)
+
+
   if(text && room){ 
+
     setfile(null)
     setfileImage(null)   
     settext('')
-    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:date.getHours() + ':' + date.getMinutes()}})
+    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:date.getHours() + ':' + date.getMinutes()}},{})
   }
     
    }
@@ -150,6 +156,7 @@ const Room =  () => {
   }
    const enterInFocus = (e)=>{
     if(e.keyCode == 13 && text !== ''){
+      setsmooth(true)
       setfile(null)
     setfileImage(null)   
     settext('')
@@ -216,7 +223,7 @@ const Room =  () => {
 }
           {room && !roomLoader &&
           <div class="Room__chat">
-          <div ref={chatOverflowRef} className="Room__chatOverflow">
+          <div ref={chatOverflowRef} className={ smooth ? "Room__chatOverflow active" : "Room__chatOverflow"}>
           {messages.map(e=>  
           <div  class={e.name === user.user.name ? "Room__message message-app you" : "Room__message message-app"}>
             <div className="message-app__main">
@@ -273,7 +280,7 @@ const Room =  () => {
              </div>
              
       
-            <Button onClick={messageFromUser} className='product-1 product-1'><SendIcon/><span className='senD'>отправить</span> </Button>
+            <Button onClick={messageFromUser} className='product-1 product-1'><SendIcon className='sendIcon'/><span className='senD'>отправить</span> </Button>
           </div></div>
         
         

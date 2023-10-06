@@ -11,7 +11,7 @@
     position: relative;
    pointer-events: inherit;
    cursor: pointer;
-   .css-i4bv87-MuiSvgIcon-root{
+   .sendIcon{
     display: none;
     @media (max-width:$tablet){
         display: block;
@@ -22,6 +22,7 @@
         }
     }
    }
+
  
    span{
     display: block;

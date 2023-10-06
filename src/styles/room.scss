@@ -36,9 +36,12 @@ gap: 30px;
   pointer-events: none;
   z-index: 100;
   &.active{
-    transition: all 0.3s ease 0s;
-    opacity: 0.5;
-    pointer-events: visible
+    @media (max-width:$tablet){
+        transition: all 0.3s ease 0s;
+        opacity: 0.5;
+        pointer-events: visible
+    }
+
   }
 }
 .emojiIcon{
@@ -56,9 +59,7 @@ gap: 30px;
     }
 }
 
-.css-18lrjg1-MuiCircularProgress-root{
 
-}
 
 &__loader{
     flex: 1 1 auto;
@@ -116,19 +117,6 @@ img{
     &__image{
         transition: all 0.3s ease 0s;
         cursor: pointer;
-        svg{
-           
-        }
-        @media (any-hover: hover){
-            &:hover{
-                svg{
-                    transition: all 0.3s ease 0s;
-              
-                }
-              
-       
-            }
-        }
         width: 30px;
         height: 30px;
         flex: 0 0 30px;
@@ -170,7 +158,11 @@ transition: all 0.3s ease 0s;
          &::-webkit-scrollbar {
          width: 0;
            }
-           scroll-behavior: smooth;
+
+           &.active{
+            scroll-behavior: smooth;
+           }
+   
 
  
 
@@ -202,9 +194,6 @@ transition: all 0.3s ease 0s;
         padding: 10px 5px;
         align-items: center;
         position: relative;
-        .css-i4bv87-MuiSvgIcon-root{
-        
-        }
     }
 }
 
@@ -217,6 +206,7 @@ transition: all 0.3s ease 0s;
         transform: translate(-100%,0);
         transition: all 0.3s ease 0s;
         &.active{
+            
             transition: all 0.3s ease 0s;
             transform: translate(0,0);
         }
