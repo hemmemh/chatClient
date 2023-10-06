@@ -132,6 +132,7 @@ const Room =  () => {
 
 
    const messageFromUser = ()=>{
+    console.log(file,fileImage);
   if(text && room){ 
     setfile(null)
     setfileImage(null)   
