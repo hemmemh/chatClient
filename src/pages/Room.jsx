@@ -39,7 +39,9 @@ const Room =  () => {
     const navRef = useRef()
     const chatOverflowRef = useRef()
     const menuIconRef = useRef()
-   
+    const emojiRef = useRef()
+    const emojiIconRef = useRef()
+  
     useEffect(() => {
       if (!user.user.name) {
        navigate('/') 
@@ -55,18 +57,22 @@ const Room =  () => {
         setroomLoader(false)
         setmessages(prev=>[...data.room.messages,data])
         setroom(data.room)
-    
+        setmenu(false)
               })
       socket.current.on('userMessageFromServer',(data)=>{
         console.log(data);
         setmessages(prev=>[...prev,{name:data.name,text:data.text,date:data.date,image:data.image}])
-        //setroom(data.room)
+    
       })
       document.addEventListener('click',(e)=>{
         if (!navRef.current?.contains(e.target) && e.target !== menuIconRef.current) {
           setmenu(false)
          
       }
+      if (!emojiRef.current?.contains(e.target) && e.target !== emojiIconRef.current && e.target && e.target !== document.querySelector('.epr-btn')) {
+        setemojiActive(false)
+       
+    }
       })
   
 
@@ -117,9 +123,14 @@ const Room =  () => {
     setactiveUser(userTwo)
     socket.current.emit('join',{data:{userOne,userTwo,name,data:date.getHours() + ':' + date.getMinutes()}})
    }
+
+
   const emojiClick = (e)=>{
    settext(prev=>`${prev}${e.emoji}`)
+   setemojiActive(false)
   }
+
+
    const messageFromUser = ()=>{
   if(text && room){ 
     setfile(null)
@@ -146,6 +157,8 @@ const Room =  () => {
   
     ///socket.current.emit('userMessage',{data:{name:user.user.name,text,roomId:room,date:date.getHours() + ':' + date.getMinutes()}})
    }
+
+
     return (
       <div className="Room">
                <div className={menu ? "Room__before active" : "Room__before "}></div>
@@ -249,13 +262,13 @@ const Room =  () => {
 <ImageIcon className='actionIcon'/>
             </label>
             <input    onChange={setFileFunction} type="file" id='file' className="Login__file" />
-            <div className={emojiActive ? "emojiPiecker active" : "emojiPiecker "}>
-            <EmojiPicker onEmojiClick={emojiClick}/>
+            <div ref={emojiRef} className={emojiActive ? "emojiPiecker active" : "emojiPiecker "}>
+            <EmojiPicker  onEmojiClick={emojiClick}/>
             </div>
             
       
              <div onClick={()=>setemojiActive(prev=>!prev)} className="emojiIcon">
-    <InsertEmoticonIcon className='actionIcon'/>
+    <InsertEmoticonIcon ref={emojiIconRef}  className='actionIcon'/>
              </div>
              
       
