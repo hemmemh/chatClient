@@ -12,7 +12,17 @@ gap: 30px;
     fill:#007AFF;
 }
 .actionIcon{
-    
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill:#000000;
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover){
+        transition: all 0.3s ease 0s;
+        &:hover{
+            fill:#007AFF
+        }
+    }
 }
 &__userLoader{
     width: 50px;
@@ -193,17 +203,7 @@ transition: all 0.3s ease 0s;
         align-items: center;
         position: relative;
         .css-i4bv87-MuiSvgIcon-root{
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            fill:#000000;
-            transition: all 0.3s ease 0s;
-            @media (any-hover: hover){
-                transition: all 0.3s ease 0s;
-                &:hover{
-                    fill:#007AFF
-                }
-            }
+        
         }
     }
 }
