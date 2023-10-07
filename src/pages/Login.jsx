@@ -163,7 +163,7 @@ export const Login = () => {
           <>
             <input ref={inputFileRef}   onChange={setFileFunction} type="file" id='file2' className="Login__file" />
    
-            <Button onClick={()=>inputFileRef.current.click()}  className='product-1 product-1'>выбрать изобрпжение</Button>
+            <Button onClick={()=>inputFileRef.current.click()}  className='product-1 product-1'>выбрать аватар</Button>
           </>
            
           }

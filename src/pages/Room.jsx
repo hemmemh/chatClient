@@ -17,6 +17,7 @@ import SendIcon from '@mui/icons-material/Send';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import Chat from '../components/chat.jsx/Chat'
 import imageCompression from 'browser-image-compression'
+import * as dayjs from 'dayjs'
 const Room =  () => {
   const [roomLoader, setroomLoader] = useState(false)
   const [userLoader, setuserLoader] = useState(false)
@@ -39,7 +40,7 @@ const Room =  () => {
     const navigate =  useNavigate()
     const [emojiActive, setemojiActive] = useState(false)
     const navRef = useRef()
- 
+
     const menuIconRef = useRef()
     const emojiRef = useRef()
     const emojiIconRef = useRef()
@@ -136,18 +137,22 @@ const Room =  () => {
     console.log(file,fileImage);
     setsmooth(true)
 
-
+   
   if(text && room){ 
 
     setfile(null)
     setfileImage(null)   
     settext('')
-    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:date.getHours() + ':' + date.getMinutes()}},{})
+    inputRef.current.style.height = '35px'
+    if (room) (document.querySelector('.Room__chatOverflow').scrollTop  = document.querySelector('.Room__chatOverflow').scrollHeight)
+    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:dayjs(Date.now()).format('hh:mm:A')}},{})
   }
     
    }
 
   const keyUpTextArea = ()=>{
+
+
     inputRef.current.style.height = '35px'
     inputRef.current.style.height=`${inputRef.current.scrollHeight}px` 
     if (room) (document.querySelector('.Room__chatOverflow').scrollTop  = document.querySelector('.Room__chatOverflow').scrollHeight)
@@ -170,7 +175,7 @@ const Room =  () => {
       setfile(null)
     setfileImage(null)   
     settext('')
-    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:date.getHours() + ':' + date.getMinutes()}})
+    socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:dayjs(Date.now()).format('hh:mm:A')}})
     }
    }
 
