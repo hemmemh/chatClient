@@ -34,7 +34,7 @@ const Chat = ({smooth,messages}) => {
       <div class="message-app__text">{e.text}</div>
     </div>
     <div className="message-app__right">
-      <div className="message-app__data">{e.date} AM</div>
+      <div className="message-app__data">{e.date}</div>
       
     </div>
       </div>
