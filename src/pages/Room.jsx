@@ -15,6 +15,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import ImageIcon from '@mui/icons-material/Image';
 import SendIcon from '@mui/icons-material/Send';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import Chat from '../components/chat.jsx/Chat'
+import imageCompression from 'browser-image-compression'
 const Room =  () => {
   const [roomLoader, setroomLoader] = useState(false)
   const [userLoader, setuserLoader] = useState(false)
@@ -37,7 +39,7 @@ const Room =  () => {
     const navigate =  useNavigate()
     const [emojiActive, setemojiActive] = useState(false)
     const navRef = useRef()
-    const chatOverflowRef = useRef()
+ 
     const menuIconRef = useRef()
     const emojiRef = useRef()
     const emojiIconRef = useRef()
@@ -47,6 +49,7 @@ const Room =  () => {
       if (!user.user.name) {
        navigate('/') 
       }
+
       setuserLoader(true)
       getAllUsers().then(data=>{
       
@@ -54,13 +57,17 @@ const Room =  () => {
       }).finally(()=>  setuserLoader(false))
      
       socket.current = io.connect(API_URL)
+
+
       socket.current.on('adminMessage',({data})=>{
         setroomLoader(false)
-        setmessages(prev=>[...data.room.messages,data])
+        setmessages(prev=>[...data.room.messages])
         setroom(data.room)
-        setmenu(false)
               })
+
+
       socket.current.on('userMessageFromServer',(data)=>{
+       
         console.log(data);
         setmessages(prev=>[...prev,{name:data.name,text:data.text,date:data.date,image:data.image}])
     
@@ -81,26 +88,17 @@ const Room =  () => {
     }, [])
 
 
-    useEffect(() => {
-     if (room && !roomLoader) {
 
-      setTimeout(() => {
-        document.querySelector('.Room__chatOverflow').scrollTop = document.querySelector('.Room__chatOverflow').scrollHeight
-      }, 100);
-   
-    
-    
-     }
-    }, [room,roomLoader,messages])
 
   
     
     
-    const setFileFunction = (e)=>{
+    const setFileFunction = async (e)=>{
      
         let reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        setfile(e.target.files[0])
+        const imageResize =await imageCompression(e.target.files[0],{maxSizeMB:0.1})
+        reader.readAsDataURL(imageResize);
+        setfile(imageResize)
         reader.onloadend = ()=>{
             setfileImage(reader.result)   
         }
@@ -120,6 +118,7 @@ const Room =  () => {
  
 }
    const connectToRooom = (userOne,userTwo,name)=>{
+    setmenu(false)
     setsmooth(false)
     setroomLoader(true)
     setactiveUser(userTwo)
@@ -147,6 +146,13 @@ const Room =  () => {
   }
     
    }
+
+  const keyUpTextArea = ()=>{
+    inputRef.current.style.height = '35px'
+    inputRef.current.style.height=`${inputRef.current.scrollHeight}px` 
+    if (room) (document.querySelector('.Room__chatOverflow').scrollTop  = document.querySelector('.Room__chatOverflow').scrollHeight)
+  
+  }
    const onLogOut = ()=>{
 
     logout().then(data=>{
@@ -155,15 +161,17 @@ const Room =  () => {
     })
   }
    const enterInFocus = (e)=>{
+    inputRef.current.style.height = '35px'
+    inputRef.current.style.height=`${inputRef.current.scrollHeight}px` 
+    if (room) (document.querySelector('.Room__chatOverflow').scrollTop  = document.querySelector('.Room__chatOverflow').scrollHeight)
     if(e.keyCode == 13 && text !== ''){
+      e.preventDefault();
       setsmooth(true)
       setfile(null)
     setfileImage(null)   
     settext('')
     socket.current.emit('userMessage',{data:{name:user.user.name,text,image:file,roomId:room._id,date:date.getHours() + ':' + date.getMinutes()}})
     }
-  
-    ///socket.current.emit('userMessage',{data:{name:user.user.name,text,roomId:room,date:date.getHours() + ':' + date.getMinutes()}})
    }
 
 
@@ -210,7 +218,7 @@ const Room =  () => {
           {!room && !roomLoader &&  
            <div className="Room__loader">
              <PersonIcon className='personIcon'/>
-             Выберите пользовотеля
+             Выберите пользователя
           </div>}
 
           {
@@ -222,37 +230,12 @@ const Room =  () => {
          </div>
 }
           {room && !roomLoader &&
-          <div class="Room__chat">
-          <div ref={chatOverflowRef} className={ smooth ? "Room__chatOverflow active" : "Room__chatOverflow"}>
-          {messages.map(e=>  
-          <div  class={e.name === user.user.name ? "Room__message message-app you" : "Room__message message-app"}>
-            <div className="message-app__main">
-            <div className="message-app__left">
-            <div class="message-app__name">{e.name}</div>
-            <div class="message-app__text">{e.text}</div>
-          </div>
-          <div className="message-app__right">
-            <div className="message-app__data">{e.date} AM</div>
-            
-          </div>
-            </div>
-            
-       
-          {e.image !== '' &&
-             <div className="message-app__image">
-             <img src={`${API_URL}/messages/${e.image}`} alt=""/>
-             </div>
-             }
-        
-          </div>)}
-          </div>
-          
-       
-      
-        </div>
+          <Chat smooth={smooth} messages={messages}/>
           }
      
           <div class="Room__inputBody">
+            <div className="Room__write">{}</div>
+            
             {fileImage &&
                 <div className="Room__imagePost">
                   <div className="Room__imagePostRemove" onClick={removeFileFunction}>
@@ -264,7 +247,7 @@ const Room =  () => {
               }
         
             
-            <input  onKeyDown={enterInFocus} ref={inputRef} value={text} onChange={(e)=>settext(e.target.value)} type="text"  className='Room__input' placeholder='Введите текст'/>
+            <textarea   onKeyUp={keyUpTextArea}   onKeyDown={enterInFocus} ref={inputRef} value={text} onChange={(e)=>settext(e.target.value)}  className='Room__input' placeholder='Введите текст'></textarea>
             <label htmlFor='file' className="Room__image">
         
 <ImageIcon className='actionIcon'/>

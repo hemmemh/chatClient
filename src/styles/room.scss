@@ -131,7 +131,11 @@ img{
         flex-direction: column;
     }
     &__input{
-        height: 40px;
+        align-self: flex-end;
+        &::-webkit-scrollbar {
+        width: 0;
+          }
+height: 35px;
 flex: 1 1 auto;
 border: none;
 font-family: 'Lato';
@@ -139,15 +143,17 @@ font-size: 16px;
 letter-spacing: 0.7px;
 font-style: normal;
 font-weight: 400;
-line-height: 17.407px; /* 142.857% */
+resize: none;
+
 color: #000000;
-padding: 5px 10px;
+display: flex;
+padding: 7px 10px;
 box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-border-radius: 30px;
-transition: all 0.3s ease 0s;
+border-radius: 20px;
+//transition: all 0.3s ease 0s;
 &:focus,
 &:active {
-    transition: all 0.3s ease 0s;
+    //transition: all 0.3s ease 0s;
 	outline: none;
     box-shadow: 0 0 5px rgba(#007AFF, 0.3);
 }
@@ -284,6 +290,14 @@ color: #000000;
 }
 
 .message-app {
+    &__right{
+        flex: 1 1 auto;
+    }
+    &__left{
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
     margin-top: auto;
     &:not(:last-child){
         margin: 0 0 30px 0;
@@ -313,6 +327,7 @@ color: #000000;
         align-items: flex-end;
         gap: 20px;
         max-width: 300px;
+        flex:1 1 auto;
     }
    
     &.you{
@@ -349,6 +364,7 @@ color: #000000;
     }
 
     &__text {
+        flex: 1 1 auto;
         font-family: 'Lato';
         font-size: 16px;
         letter-spacing: 0.7px;
@@ -356,6 +372,7 @@ color: #000000;
         font-weight: 400;
         line-height: 17.407px; /* 142.857% */
         color: #fff;
+        word-break: break-all;
     }
 }
 
@@ -363,7 +380,7 @@ color: #000000;
     background: #007AFF;
  padding: 10px;
  border-radius: 50%;
-
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     display: none;
     cursor: pointer;
     @media (max-width:$tablet){
